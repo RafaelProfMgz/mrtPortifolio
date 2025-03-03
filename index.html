@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meu Portfólio</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <link rel="icon" href="./assets/morte.png" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul id="desktop-menu" class="menu-desktop">
+          <li>
+            <a href="#inicio" class="menu-item"
+              ><i class="fas fa-home"></i> Início</a
+            >
+          </li>
+          <li>
+            <a href="#about" class="menu-item"
+              ><i class="fas fa-info-circle"></i> Sobre</a
+            >
+          </li>
+          <li>
+            <a href="#projects" class="menu-item"
+              ><i class="fas fa-cogs"></i> Projetos</a
+            >
+          </li>
+          <li>
+            <a href="#contact" class="menu-item"
+              ><i class="fas fa-envelope"></i> Contato</a
+            >
+          </li>
+          <!-- Botão de alternância de tema -->
+          <li>
+            <button
+              id="theme-toggle"
+              class="theme-toggle"
+              aria-label="Alternar Tema"
+            >
+              <i class="fas fa-moon"></i>
+            </button>
+          </li>
+        </ul>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Abrir Menu">
+          &#9776;
+        </button>
+        <ul id="mobile-menu" class="menu-mobile hidden">
+          <li>
+            <a href="#inicio" class="menu-item"
+              ><i class="fas fa-home"></i> Início</a
+            >
+          </li>
+          <li>
+            <a href="#about" class="menu-item"
+              ><i class="fas fa-info-circle"></i> Sobre</a
+            >
+          </li>
+          <li>
+            <a href="#projects" class="menu-item"
+              ><i class="fas fa-cogs"></i> Projetos</a
+            >
+          </li>
+          <li>
+            <a href="#contact" class="menu-item"
+              ><i class="fas fa-envelope"></i> Contato</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="inicio">
+      <section class="banner">
+        <img
+          src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?w=1080"
+          alt="Banner da página"
+          class="banner-image"
+        />
+        <h3 class="banner-text">Bem-vindo ao meu cantinho</h3>
+      </section>
+
+      <section class="carrossel-infinit">
+        <div class="carousel-container">
+          <div class="carousel-track">
+            <!-- As imagens serão inseridas dinamicamente via JavaScript -->
+          </div>
+        </div>
+      </section>
+      <section class="about" id="about">
+        <div class="image-sobre">
+          <img
+            src="https://i.pinimg.com/236x/21/65/2d/21652d0a23489dca8b6f798134f9c8f9.jpg"
+            alt="Imagem de perfil"
+          />
+        </div>
+
+        <div class="about-content">
+          <h2>Sobre Mim</h2>
+          <p id="sobre-texto">
+            Olá! Sou um desenvolvedor web apaixonado por tecnologia e design.
+            Trabalho principalmente com React, Angular, Typescript e sempre
+            busco melhorar minhas habilidades. Gosto de trazer ideias para
+            realidade.
+          </p>
+
+          <!-- Botões -->
+          <div class="container-button-sobre">
+            <button
+              class="button-sobre-habilidades"
+              onclick="window.location.href='#habilidades'"
+            >
+              <i class="fas fa-arrow-down"></i> Habilidades
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="projects section" id="projects">
+        <div class="carousel-container-project">
+          <h2>Meus Projetos</h2>
+          <div class="carousel-container-project">
+            <!-- Botão para mover para a esquerda -->
+            <button class="carousel-arrow left" onclick="moveCarousel('left')">
+              &#10094;
+            </button>
+
+            <!-- Faixa do carrossel -->
+            <div class="carousel-track-project">
+              <!-- Aqui serão inseridos os cards dinamicamente -->
+            </div>
+
+            <!-- Botão para mover para a direita -->
+            <button
+              class="carousel-arrow right"
+              onclick="moveCarousel('right')"
+            >
+              &#10095;
+            </button>
+          </div>
+        </div>
+      </section>
+      <section id="habilidades" class="habilidades-section section">
+        <h2>Minhas Habilidades</h2>
+        <p>
+          Tenho experiência em várias tecnologias e continuo aprendendo para me
+          aprimorar. Aqui estão algumas das minhas principais habilidades:
+        </p>
+
+        <div class="habilidades-container">
+          <div class="habilidade-card">
+            <i class="fas fa-code"></i>
+            <h3>Desenvolvimento Web</h3>
+            <p>
+              Trabalho com HTML, CSS, JavaScript, e frameworks como React,
+              Vue.js, angular e Next.js .
+            </p>
+          </div>
+
+          <div class="habilidade-card">
+            <i class="fas fa-database"></i>
+            <h3>Banco de Dados</h3>
+            <p>
+              Experiência com bancos de dados relacionais como MySQL,
+              PostgreSQL, FireBase, SupaBase e Sqlite.
+            </p>
+          </div>
+
+          <div class="habilidade-card">
+            <i class="fas fa-server"></i>
+            <h3>Backend</h3>
+            <p>
+              Conhecimento em Node.js, Next.js, Express e criação de APIs
+              RESTful.
+            </p>
+          </div>
+
+          <div class="habilidade-card">
+            <i class="fas fa-paint-brush"></i>
+            <h3>Design e UI/UX</h3>
+            <p>
+              Criação de interfaces funcionais e design focado na experiência do
+              usuário.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="contato section" id="contact">
+        <h2>Entre em Contato</h2>
+        <p>Preencha o formulário abaixo para entrar em contato comigo.</p>
+
+        <form id="contactForm" class="contact-form">
+          <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Mensagem</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Enviar</button>
+        </form>
+
+        <p id="formMessage" style="color: red"></p>
+        <!-- Mensagem de erro -->
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Portfólio Angel Rafael. Todos os direitos reservados.</p>
+      <p>
+        <a href="#">Termos de Serviço</a> |
+        <a href="#">Política de Privacidade</a>
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

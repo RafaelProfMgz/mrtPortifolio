@@ -1,0 +1,830 @@
+html {
+  scroll-behavior: smooth;
+}
+/* Definição de variáveis para temas */
+:root {
+  --background-color: #fff;
+  --text-color: #333;
+  --link-color: #0066cc;
+  --footer-background: #f8f8f8;
+  --footer-text-color: #777;
+  --header-background: #fff;
+  --header-link-color: #333;
+  --about-background: #f9f9f9;
+  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --card-hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  --carousel-background: #494949;
+  --carousel-icon-size: 50px;
+  --carousel-icon-spacing: 1rem;
+  --font-family: "Quicksand", sans-serif;
+  --text-color-padrao: #fff;
+  --project-card-background: #fff;
+  --project-card-hover-background: #f0f0f0;
+  --project-card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --project-card-hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  --project-image-height: 200px;
+  --project-image-radius: 10px;
+
+  /* Estilos de Botões */
+  --button-sobre-ver-mais-color-hover: #949090;
+  --button-sobre-ver-mais-color-border: #949090;
+  --text-hover-ver-mais: #fff;
+
+  --button-sobre-habilidades-color-hover: #87bff7;
+  --button-sobre-habilidades-color-border: #87bff7;
+  --text-hover-habilidades: #fff;
+
+  --site-button-color-border: #949090;
+  --site-button-color-border-hover: #949090;
+
+  --github-button-color-border: #87bff7;
+  --github-button-color-border-hover: #87bff7;
+}
+
+/* Tema escuro */
+[data-theme="dark"] {
+  --font-family: "Quicksand", sans-serif;
+  --background-color: #121212;
+  --text-color: #e0e0e0;
+  --link-color: #00bcd4;
+  --footer-background: #1f1f1f;
+  --footer-text-color: #bbb;
+  --header-background: #121212;
+  --header-link-color: #e0e0e0;
+  --about-background: #1e1e1e;
+  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --card-hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  --carousel-background: #2b2b2b;
+  --carousel-icon-size: 50px;
+  --carousel-icon-spacing: 1rem;
+  --text-color-padrao: #fff;
+  --project-card-background: #333;
+  --project-card-hover-background: #444;
+  --project-card-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --project-card-hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+
+  /* Estilos de Botões no Tema Escuro */
+  --button-sobre-ver-mais-color-hover: #949090;
+  --button-sobre-ver-mais-color-border: #949090;
+  --text-hover-ver-mais: #000000;
+
+  --button-sobre-habilidades-color-hover: #87bff7;
+  --button-sobre-habilidades-color-border: #87bff7;
+  --text-hover-habilidades: #000000;
+}
+
+/* Estilo inicial das seções (invisíveis) */
+.section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Classe que será adicionada quando a seção entrar na tela */
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Corpo */
+body {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6; /* Aumenta a legibilidade */
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: var(--link-color);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Cabeçalho */
+header {
+  background-color: var(--header-background);
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Navegação desktop */
+.menu-desktop {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-desktop li {
+  margin: 0 20px;
+}
+
+.menu-item {
+  font-size: 1.1rem;
+  color: var(--header-link-color);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu-item:hover {
+  background-color: var(--link-hover-bg);
+  color: var(--link-hover-color);
+}
+
+.menu-item i {
+  margin-right: 8px; /* Espaçamento entre o ícone e o texto */
+}
+
+/* Botão de alternância de tema */
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--header-link-color);
+  padding: 5px 10px;
+  transition: color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--link-color);
+}
+
+/* Menu móvel */
+.menu-toggle {
+  display: none; /* Esconde o botão de alternância no desktop */
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--header-link-color);
+}
+
+.menu-mobile {
+  display: none;
+  list-style-type: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: 20px;
+  transform: translateY(-20px); /* Inicialmente escondido, acima */
+  opacity: 0; /* Inicia invisível */
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Transições suaves */
+}
+
+.menu-mobile li {
+  margin: 10px 0;
+}
+
+/* Exibe o menu quando a classe 'show' for adicionada */
+.menu-mobile.show {
+  display: flex;
+  transform: translateY(0); /* Move para baixo */
+  opacity: 1; /* Torna visível */
+}
+
+/* Estilos para telas pequenas */
+@media (max-width: 768px) {
+  .menu-desktop {
+    display: none; /* Esconde o menu de navegação original no mobile */
+  }
+
+  .menu-toggle {
+    display: block; /* Exibe o botão de alternância no mobile */
+  }
+
+  .menu-item {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 12px;
+    border: 1px solid #ccc; /* Borda ao redor dos itens */
+    margin: 5px;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    width: 100%;
+  }
+
+  .menu-item:hover {
+    background-color: var(--link-hover-bg);
+    color: var(--link-hover-color);
+  }
+
+  .menu-mobile.show {
+    display: flex; /* Exibe o menu quando a classe 'show' for adicionada */
+  }
+}
+
+/* Banner */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.8);
+}
+
+.banner-text {
+  position: absolute;
+  bottom: 20px;
+  left: 30%;
+  top: 50%;
+  color: white;
+  font-size: 5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo para o carrossel */
+.carousel-container {
+  overflow: hidden;
+  position: relative;
+  background: var(--carousel-background);
+  padding: 10px 0;
+  width: 100%;
+}
+
+/* Animação para rolagem infinita */
+.carousel-track {
+  display: flex;
+  align-items: center;
+  animation: scrollIcons 20s linear infinite;
+  will-change: transform;
+}
+
+/* Estilo dos ícones */
+.carousel-icon {
+  width: var(--carousel-icon-size);
+  height: var(--carousel-icon-size);
+  margin: 0 var(--carousel-icon-spacing);
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.carousel-icon:hover {
+  transform: scale(1.2);
+}
+
+/* Animação suave */
+@keyframes scrollIcons {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+/* About Section */
+.about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  gap: 5rem;
+  background-color: var(--about-background);
+  min-height: 100vh;
+  flex-wrap: wrap; /* Permite que os itens se ajustem em telas menores */
+}
+
+.image-sobre {
+  width: 350px;
+  height: 550px;
+  border-radius: 10%;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.image-sobre img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-sobre:hover {
+  box-shadow: var(--card-hover-shadow);
+}
+
+.about-content {
+  max-width: 600px;
+  text-align: center;
+  flex: 1; /* Faz com que o conteúdo ocupe o espaço restante */
+}
+
+.about-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.about-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Estilo geral do botão */
+button {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  padding: var(--button-padding);
+  font-size: var(--button-font-size);
+  border: var(--button-border);
+  cursor: var(--button-cursor);
+  transition: background-color 0.3s ease;
+}
+
+.container-button-sobre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+/* Estilo do botão 'Ver Mais' */
+.button-sobre-ver-mais {
+  border-radius: 10px;
+  padding: 0.8rem 1.5rem;
+  height: 50px;
+  background-color: var(--background-color);
+  border: 2px solid var(--button-sobre-ver-mais-color-border);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem; /* Espaço entre o ícone e o texto */
+}
+
+.button-sobre-ver-mais i {
+  font-size: 1.2rem; /* Tamanho do ícone */
+}
+
+.button-sobre-ver-mais:hover {
+  background-color: var(--button-sobre-ver-mais-color-hover);
+  cursor: pointer;
+  color: var(--text-hover-ver-mais);
+}
+
+/* Estilo do botão 'Habilidades' */
+.button-sobre-habilidades {
+  border-radius: 10px;
+  padding: 0.8rem 1.5rem;
+  height: 50px;
+  background-color: var(--background-color);
+  border: 2px solid var(--button-sobre-habilidades-color-border);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem; /* Espaço entre o ícone e o texto */
+}
+
+.button-sobre-habilidades i {
+  font-size: 1.2rem; /* Tamanho do ícone */
+}
+
+.button-sobre-habilidades:hover {
+  background-color: var(--button-sobre-habilidades-color-hover);
+  color: var(--text-hover-habilidades);
+  cursor: pointer;
+}
+
+/* Seção de Projetos */
+.projects {
+  text-align: center;
+  font-family: var(--font-family);
+}
+
+.projects h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--text-color-padrao);
+}
+
+/* Container do carrossel */
+.carousel-container-project {
+  flex-direction: column;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  background-color: var(--carousel-background);
+  border-radius: 10px;
+  padding: 2rem;
+}
+
+/* Faixa do carrossel que contém os cards */
+.carousel-track-project {
+  display: flex;
+  justify-content: center;
+  transition: transform 0.5s ease;
+  gap: var(--carousel-icon-spacing); /* Distância entre os cards */
+}
+
+/* Estilo para os cards */
+.project-card {
+  flex: 0 0 300px; /* Tamanho fixo de cada card */
+  background-color: var(--project-card-background);
+  box-shadow: var(--project-card-shadow);
+  border-radius: var(--project-image-radius);
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+  box-shadow: var(--project-card-hover-shadow);
+  background-color: var(--project-card-hover-background);
+}
+
+.project-image {
+  width: 100%;
+  height: var(--project-image-height);
+  object-fit: cover;
+  border-radius: var(--project-image-radius);
+  margin-bottom: 1rem;
+}
+
+.project-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.project-card p {
+  font-size: 1rem;
+  color: var(--text-color);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Para navegadores baseados em WebKit */
+  line-clamp: 3; /* Padrão */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+.project-card p:hover {
+  cursor: pointer;
+}
+
+#popover {
+  position: absolute;
+  padding: 8px;
+  background-color: #333;
+  color: white;
+  border-radius: 5px;
+  display: none;
+  white-space: nowrap;
+  transform: translate(-50%, -100%);
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--header-link-color);
+  color: var(--text-color-padrao);
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.carousel-arrow.left {
+  left: 10px;
+}
+
+.carousel-arrow.right {
+  right: 10px;
+}
+
+.button-container {
+  display: flex;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.github-button {
+  border-radius: 10px;
+  padding: 0.8rem 1.5rem;
+  height: 50px;
+  background-color: var(--background-color);
+  border: 2px solid var(--github-button-color-border);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.github-button:hover {
+  background-color: var(--github-button-color-border);
+  color: var(--text-hover-habilidades);
+  cursor: pointer;
+}
+
+.site-button {
+  border-radius: 10px;
+  padding: 0.8rem 1.5rem;
+  height: 50px;
+  background-color: var(--background-color);
+  border: 2px solid var(--site-button-color-border);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.site-button:hover {
+  background-color: var(--site-button-color-border-hover);
+  color: var(--text-hover-habilidades);
+  cursor: pointer;
+}
+
+/* Estilos para a seção de habilidades */
+.habilidades-section {
+  background-color: var(--about-background);
+  padding: 3rem;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.habilidades-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.habilidades-section p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+.habilidades-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.habilidade-card {
+  background-color: var(--background-color);
+  border: 2px solid var(--button-sobre-habilidades-color-border);
+  border-radius: 10px;
+  padding: 2rem;
+  width: 250px;
+  box-shadow: var(--card-shadow);
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.habilidade-card:hover {
+  box-shadow: var(--card-hover-shadow);
+  transform: translateY(-5px);
+}
+
+.habilidade-card i {
+  font-size: 2rem;
+  color: var(--link-color);
+  margin-bottom: 1rem;
+}
+
+.habilidade-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.habilidade-card p {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+/* Estilos gerais para a seção de contato */
+.contato {
+  padding: 40px 20px;
+  background-color: var(--about-background);
+  text-align: center;
+}
+
+.contato h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.contato p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: var(--text-color);
+}
+
+/* Estilo do formulário */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--background-color);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  transition: box-shadow 0.3s ease;
+}
+
+.contact-form:hover {
+  box-shadow: var(--card-hover-shadow);
+}
+
+.contact-form .form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.contact-form label {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 5px;
+  display: block;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.contact-form textarea {
+  height: 150px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--link-color);
+}
+/* Estilo do botão */
+.contact-form button.submit-btn {
+  background-color: var(--background-color);
+  border: 2px solid var(--button-sobre-habilidades-color-border);
+  padding: 15px 30px;
+  border-radius: 10px; /* Mantendo apenas uma definição */
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.contact-form button.submit-btn:hover {
+  background-color: var(--button-sobre-habilidades-color-hover);
+  transform: scale(1.05);
+}
+
+.contact-form button.submit-btn:focus {
+  outline: none;
+  background-color: var(--button-sobre-habilidades-color-border);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--link-color);
+}
+
+#formMessage {
+  color: red;
+  font-weight: bold;
+}
+
+/* Rodapé */
+footer {
+  background-color: var(--footer-background);
+  color: var(--footer-text-color);
+  text-align: center;
+  padding: 20px;
+}
+
+footer a {
+  color: var(--link-color);
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para alternar entre os temas */
+body[data-theme="dark"] {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Responsividade: Ajustes para telas menores */
+@media (max-width: 1024px) {
+  .about {
+    gap: 2rem; /* Reduz o espaçamento entre os elementos */
+    padding: 2rem;
+  }
+
+  .image-sobre {
+    width: 300px;
+    height: 450px;
+  }
+
+  .about-content {
+    max-width: 90%;
+  }
+
+  .container-button-sobre {
+    flex-direction: column; /* Alinha os botões verticalmente */
+    gap: 1rem; /* Reduz o espaçamento entre os botões */
+  }
+}
+
+@media (max-width: 768px) {
+  .banner-text {
+    font-size: 1.5rem;
+    bottom: 10px;
+    left: 10px;
+  }
+
+  .about {
+    flex-direction: column; /* Alinha os itens em coluna */
+    gap: 2rem;
+  }
+
+  .image-sobre {
+    width: 80%; /* Aumenta a imagem para caber melhor */
+    height: 300px;
+  }
+
+  .about-content {
+    text-align: center;
+    max-width: 90%;
+  }
+
+  .button-sobre-ver-mais,
+  .button-sobre-habilidades {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+
+  .container-button-sobre {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  nav ul {
+    display: none; /* Esconde o menu de navegação original */
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding-top: 20px;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .about {
+    padding: 1rem;
+  }
+
+  .image-sobre {
+    width: 100%;
+    height: 250px;
+  }
+
+  .about-content {
+    max-width: 100%;
+  }
+
+  .button-sobre-ver-mais,
+  .button-sobre-habilidades {
+    width: 100%; /* Botões ocupam toda a largura disponível */
+    font-size: 1.1rem;
+  }
+}

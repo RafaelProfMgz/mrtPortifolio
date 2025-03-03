@@ -1,0 +1,17 @@
+# Ignorar node_modules caso use algum gerenciador de pacotes
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Ignorar arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivos de build
+dist/
+build/
+
+# Ignorar configurações do editor
+.vscode/
+.idea/
+*.code-workspace

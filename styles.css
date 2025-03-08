@@ -26,9 +26,9 @@ html {
   --project-image-radius: 10px;
 
   /* Estilos de Botões */
-  --button-sobre-ver-mais-color-hover: #949090;
-  --button-sobre-ver-mais-color-border: #949090;
-  --text-hover-ver-mais: #fff;
+  --button-sobre-github-color-hover: #949090;
+  --button-sobre-github-color-border: #949090;
+  --text-hover-github: #fff;
 
   --button-sobre-habilidades-color-hover: #87bff7;
   --button-sobre-habilidades-color-border: #87bff7;
@@ -64,9 +64,9 @@ html {
   --project-card-hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 
   /* Estilos de Botões no Tema Escuro */
-  --button-sobre-ver-mais-color-hover: #949090;
-  --button-sobre-ver-mais-color-border: #949090;
-  --text-hover-ver-mais: #000000;
+  --button-sobre-github-color-hover: #949090;
+  --button-sobre-github-color-border: #949090;
+  --text-hover-github: #000000;
 
   --button-sobre-habilidades-color-hover: #87bff7;
   --button-sobre-habilidades-color-border: #87bff7;
@@ -383,6 +383,29 @@ button {
   background-color: var(--button-sobre-ver-mais-color-hover);
   cursor: pointer;
   color: var(--text-hover-ver-mais);
+}
+
+/* Estilo do botão 'github' */
+.button-sobre-github {
+  border-radius: 10px;
+  padding: 0.8rem 1.5rem;
+  height: 50px;
+  background-color: var(--background-color);
+  border: 2px solid var(--button-sobre-github-color-border);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem; /* Espaço entre o ícone e o texto */
+}
+
+.button-sobre-github i {
+  font-size: 1.2rem; /* Tamanho do ícone */
+}
+
+.button-sobre-github:hover {
+  background-color: var(--button-sobre-github-color-hover);
+  color: var(--text-hover-github);
+  cursor: pointer;
 }
 
 /* Estilo do botão 'Habilidades' */
@@ -733,6 +756,11 @@ footer a {
 
 footer a:hover {
   text-decoration: underline;
+}
+
+.social-btn:hover {
+  color: var(--text-hover-github);
+  cursor: pointer;
 }
 
 /* Estilos para alternar entre os temas */

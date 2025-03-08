@@ -115,7 +115,11 @@
           </p>
 
           <!-- Botões -->
+
           <div class="container-button-sobre">
+            <button class="button-sobre-github" id="githubButton">
+              <i class="fas fa-arrow-down"></i> GitHub Portfólio
+            </button>
             <button
               class="button-sobre-habilidades"
               onclick="window.location.href='#habilidades'"
@@ -198,29 +202,45 @@
 
       <section class="contato section" id="contact">
         <h2>Entre em Contato</h2>
-        <p>Preencha o formulário abaixo para entrar em contato comigo.</p>
+        <p>Preencha o formulário abaixo para falar comigo.</p>
 
         <form id="contactForm" class="contact-form">
           <div class="form-group">
             <label for="name">Nome</label>
-            <input type="text" id="name" name="name" required />
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Digite seu nome"
+              required
+            />
           </div>
 
           <div class="form-group">
             <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" required />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Digite seu e-mail"
+              required
+            />
           </div>
 
           <div class="form-group">
             <label for="message">Mensagem</label>
-            <textarea id="message" name="message" required></textarea>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Escreva sua mensagem"
+              required
+            ></textarea>
           </div>
 
           <button type="submit" class="submit-btn">Enviar</button>
+          <p id="formMessage" class="form-message"></p>
+          <!-- Mensagem de erro ou sucesso -->
         </form>
-
-        <p id="formMessage" style="color: red"></p>
-        <!-- Mensagem de erro -->
       </section>
     </main>
 
@@ -230,6 +250,21 @@
         <a href="#">Termos de Serviço</a> |
         <a href="#">Política de Privacidade</a>
       </p>
+      <div class="social-links">
+        <button
+          class="social-btn github"
+          onclick="window.location.href='https://github.com/RafaelProfMgz'"
+        >
+          <i class="fab fa-github"></i> GitHub
+        </button>
+        | 
+        <button
+          class="social-btn linkedin"
+          onclick="window.location.href='https://www.linkedin.com/in/angel-rafael-souza-da-silva-a5ba2521a/'"
+        >
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </button>
+      </div>
     </footer>
 
     <script src="script.js"></script>

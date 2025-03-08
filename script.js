@@ -36,6 +36,10 @@ document.addEventListener("scroll", () => {
   });
 });
 
+document.getElementById("githubButton").addEventListener("click", function () {
+  window.open("https://github.com/RafaelProfMgz/mrtPortifolio", "_blank");
+});
+
 // carrossel icons linguagens
 const icons = [
   { src: "assets/icons/html.png", alt: "HTML" },
@@ -224,8 +228,6 @@ function createProjectCards(projects) {
   carouselTrackProject.appendChild(fragment);
 }
 
-
-
 // Chamando a função para criar os cards
 createProjectCards(projects);
 
@@ -290,5 +292,3 @@ function validateForm(event) {
 
 // Adicionando o evento de validação ao formulário
 document.getElementById("contactForm").addEventListener("submit", validateForm);
-
-
